@@ -36,7 +36,7 @@ public class ListarCardapioServlet extends HttpServlet {
 		filtro.setNome(nomeFiltro);
 		
 		
-		if(session.getAttribute("gerente") == null){
+		if(session.getAttribute("usuario") == null){
 			resp.sendRedirect("/login/login.jsp");
 			return;
 		}

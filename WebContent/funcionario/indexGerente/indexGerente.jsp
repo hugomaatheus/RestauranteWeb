@@ -61,6 +61,13 @@
 									</td>
 								</tr>
 							</article>
+							<article class="tabContainer" id="Cliente">
+								<tr>
+									<td>
+										<input class="botao" type="button" onclick="window.open('/RestauranteWeb/cliente/listarClientes.jsp')" value="Pagina Cliente"></input>
+									</td>
+								</tr>
+							</article>
 						</fieldset>
 					</article>
 				</div>		

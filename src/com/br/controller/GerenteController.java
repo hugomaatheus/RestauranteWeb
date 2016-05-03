@@ -8,12 +8,14 @@ import javax.swing.JOptionPane;
 
 import com.br.dao.CardapioDao;
 import com.br.dao.CategoriaDao;
+import com.br.dao.ClienteDao;
 import com.br.dao.FuncionarioDao;
 import com.br.dao.ItemPedidoDao;
 import com.br.dao.MesaDao;
 import com.br.dao.UsuarioDao;
 import com.br.model.Cardapio;
 import com.br.model.Categoria;
+import com.br.model.Cliente;
 import com.br.model.Funcionario;
 import com.br.model.Gerente;
 import com.br.model.ItemPedido;
@@ -419,7 +421,26 @@ public static List<Mesa> consultarTodosMesas() {
 		
 		return f;
 	}
+	
+	public static List<Cliente> listarTodosClientes() {
+		EntityManager eM = AbstractController.factory.createEntityManager();
 
+		List<Cliente> clientes = new ArrayList<Cliente>();
+		
+		try {
+			ClienteDao cDao = new ClienteDao(eM);
+			clientes = cDao.listar();
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			eM.getTransaction().rollback();
+		}
+		finally {
+			eM.close();
+		}
+		
+		return clientes; 
+	}
+	
 	public static Mesa buscar(int numero) {
 		EntityManager eM = AbstractController.factory.createEntityManager();
 		MesaDao mesaDao = new MesaDao(eM);
