@@ -1,0 +1,252 @@
+﻿ul.tabs {
+	list-style: none;
+	margin: 0px;
+	padding-bottom: 2px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 5px;
+	float: left;
+	height: 30px;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	width: 100%;
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFA500, endColorstr=#FFC04D)";
+	/*Como sabemos o IE é sempre o problema dos desenvolvedores. Para utilizar um efeito Gradiente do Css3 no IE é necessário acrescentar esta linha*/
+	-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFA500, endColorstr=#FFC04D );
+	/*IE 5.5 - 7  ------ Esta linha faz com que o efeito gradiente do Css3 funciona em versões antigas do IE*/
+	background: -moz-linear-gradient(top, #FFA500, #FFC04D) repeat-X;
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFA500), to(#FFC04D) ) repeat-X;
+}
+ 
+ul.tabs li {
+	float: left;
+	margin: 1px;
+	padding: 0px;
+	height: 30px;
+	line-height: 31px;
+	border: 1px solid #999;
+	border-left: none;
+	margin-bottom: -1px;
+	overflow: hidden;
+	position: relative;
+}
+ 
+ul.tabs li a {
+	text-decoration: none;
+	color: white;
+	font: bold;
+	display: block;
+	font-size: 1.2em;
+	font-family: Times new roman;
+	padding: 0 20px;
+	border: 1px solid #fff;
+	outline: none;
+}
+ 
+ul.tabs li.active a
+	/*Deixa a cor da fonte laranja assim que aba se torna ativa*/ {
+	color: #E68A00;
+}
+ 
+ul.tabs li a:hover {
+	background: #FFEBCC;
+	color: #E68A00;
+}
+ 
+html ul.tabs li.active {
+	color: #E68A00;
+	background: #fff;
+	/* a aba aparece com o fundo branco quando selecionada*/
+	border-bottom: 1px solid #fff;
+	/*--faz a aba ativa parecer conectada com seu conteudo--*/
+}
+ 
+html ul.tabs li.active a:hover
+	/*--Faz a lista ativa nao obedecer as propriedades do hover--*/ {
+	color: #E68A00;
+	background: #fff;
+	border-bottom: 1px solid #fff;
+}
+ 
+.tab_container {
+	border-top: none;
+	overflow: hidden;
+	clear: both;
+	float: left;
+	width: 100%;
+	background: #fff;
+}
+ 
+.cont_tab {
+	padding: 25px;
+	font-size: 1.2em;
+	border-top-width: 0px;
+}
+ 
+fieldset {
+		text-align: center;
+		position:absolute;
+		left:18%;
+		top:12%;
+		margin: auto;
+		width: 1000px; 
+		height: 500px;
+}
+
+#caixa_1{	
+	position:absolute;
+	width: 400px;
+	height: 320px;
+	left: 100px;
+	top:50px;
+}
+
+#caixa_2{	
+	position:absolute;
+	width: 400px;
+	height: 320px;
+	left: 520px;
+	top: 50px;
+}
+
+#labelLogin {
+	position:absolute;
+	left: 50px;
+	top: 50px;
+}
+	
+#txtlogin{
+	position:absolute;
+	left: 180px;
+	top:50px;
+}
+
+
+#labelsenha {
+	position:absolute;
+	left: 50px;
+	top: 100px;
+}
+	
+#txtsenha{
+	position:absolute;
+	left: 180px;
+	top: 100px;
+
+}
+
+#labelNome {
+	position:absolute;
+	left: 50px;
+	top: 150px;
+}
+	
+#txtNome{
+	position:absolute;
+	left: 180px;
+	top: 150px;	
+}
+
+#labeltelefone {
+	position:absolute;
+	left: 50px;
+	top: 200px;
+}
+	
+#txtTelefone {
+	position:absolute;
+	left: 180px;
+	top: 200px;
+}
+
+#labelemail {
+	position:absolute;
+	left: 50px;
+	top: 240px;
+}
+	
+#txtemail {
+	position:absolute;
+	left: 180px;
+	top: 250px;
+}
+
+
+#labelrua {
+	position:absolute;
+	left: 50px;
+	top: 50px;
+}
+	
+#txtrua {
+	position:absolute;
+	left: 180px;
+	top: 50px;
+
+}
+
+#labelnumero {
+	position:absolute;
+	left: 50px;
+	top: 100px;
+}
+	
+#txtnumero {
+	position:absolute;
+	left: 180px;
+	top: 100px;	
+}
+
+#labelcomplemento {
+	position:absolute;
+	left: 50px;
+	top: 150px;
+}
+	
+#txtcomplemento {
+	position:absolute;
+	left: 180px;
+	top: 150px;
+}
+
+#labelbairro {
+	position:absolute;
+	left: 50px;
+	top: 200px;
+}
+	
+#txtbairro {
+	position:absolute;
+	left: 180px;
+	top:200px;
+}
+
+
+#labelcep {
+	position:absolute;
+	left: 50px;
+	top: 250px;
+}
+	
+#txtcep {
+	position:absolute;
+	left: 180px;
+	top: 250px;
+}
+
+#btnvoltar{
+	position:absolute;
+	width: 100px;
+	height: 30px;
+	top: 400px;
+	left: 520px;
+}
+
+#btnsalvar{
+	position:absolute;
+	width: 100px;
+	height: 30px;
+	top: 400px;
+	left: 400px;
+}
