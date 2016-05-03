@@ -14,10 +14,6 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name="usuario_id")
 public class Cliente extends Usuario {
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="cliente_delivery", joinColumns=@JoinColumn(name="usuario_id"),
-	inverseJoinColumns=@JoinColumn(name="pedido_id"))
-	private Collection<Delivery> delivery;
 	
 	public Cliente(String login, String senha, String email, String nome, Endereco endereco) {
 		super(login, senha, email, nome, endereco);
@@ -29,7 +25,7 @@ public class Cliente extends Usuario {
 
 	@Override
 	public String toString() {
-		return "Cliente [delivery=" + delivery + ", getId()=" + getId() + ", getLogin()=" + getLogin() + ", getSenha()="
+		return "getId()=" + getId() + ", getLogin()=" + getLogin() + ", getSenha()="
 				+ getSenha() + ", getEmail()=" + getEmail() + ", getNome()=" + getNome() + ", getStatus()="
 				+ getStatus() + ", getTipo()=" + getTipo() + ", getEndereco()=" + getEndereco() + "]";
 	}

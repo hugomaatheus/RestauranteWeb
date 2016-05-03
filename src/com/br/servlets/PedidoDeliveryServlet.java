@@ -9,22 +9,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.br.controller.ClienteController;
 import com.br.controller.GerenteController;
 import com.br.model.Cardapio;
 import com.br.model.ItemPedido;
+import com.br.model.Usuario;
 
 @WebServlet("/pedido/clientePedido/PedidoDelivery")
 public class PedidoDeliveryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private List<ItemPedido> itens; 
+	List<ItemPedido> itens; 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		HttpSession session = request.getSession(false);
 	    List<Cardapio> cardapios;
 		
-		if(itens == null  || request.getAttribute("itens") == null) {
+		if(itens == null) {
 			itens = new ArrayList<ItemPedido>();
 		}
 		cardapios = GerenteController.consultarTodosCardapios();
@@ -32,27 +33,42 @@ public class PedidoDeliveryServlet extends HttpServlet {
 		request.setAttribute("cardapios", cardapios);
 		request.setAttribute("itens", itens);
 		System.out.println("ITENS ATRIB" + itens);
+		
+		String trocoPara = request.getParameter("trocoPara");
+		System.out.println(trocoPara);
+		
+		if(!(trocoPara == null)) {
+			Usuario cliente;
+			cliente = ClienteController.buscarUsuario(1L);
+			System.out.println("QTD DOGET" + itens.get(0).getQtd());
+			ClienteController.cadastrarPedidoDelivery(cliente, itens, new Double(trocoPara));
+		}
+		
+		
 		request.getRequestDispatcher("/pedido/clientePedido/delivery.jsp").forward(request, response);
 		
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String qtd = request.getParameter("qtde");
-		String cardapioId = request.getParameter("menuCardapio");
 		ItemPedido itemPedido = new ItemPedido();
-		Cardapio cardapio;
+		String cardapioId = request.getParameter("menuCardapio");
+		String qtd = request.getParameter("qtde");
+		Cardapio cardapio = GerenteController.consultarCardapio(new Long(cardapioId));
 		
-		cardapio = GerenteController.consultarCardapio(new Long(cardapioId));
-		
-		System.out.println("CARDAPIO"+cardapio);
-		System.out.println("QTD"+qtd);
 		itemPedido.setCardapio(cardapio);
-		itemPedido.setQtd(new Integer(qtd));
-		itens.add(itemPedido);
-		System.out.println("ITENS" + itens);
+		itemPedido.setQtd(Integer.valueOf(qtd));
+		System.out.println("QTD DOPOST" + qtd);
 		
-		
+		boolean exist = false;
+		for (ItemPedido itemP : itens) {
+			if(itemP.getCardapio().getNome().equals(cardapio.getNome())){
+				itemP.setQtd(itemPedido.getQtd()+Integer.valueOf(qtd));
+				exist = true;
+			}
+		}
+		if(!exist)
+			itens.add(itemPedido);
 		doGet(request, response);
 	}
 

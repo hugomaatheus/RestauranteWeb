@@ -18,10 +18,10 @@ public class Delivery extends Pedido {
 	@JoinColumn(name="fk_cliente")
 	private Cliente cliente;
 		
-	public Delivery(Double trocoPara, Cliente cliente) {
+	public Delivery(Double trocoPara, Usuario cliente) {
 		super();
 		this.trocoPara = trocoPara;
-		this.cliente = cliente;
+		this.cliente = (Cliente) cliente;
 	}
 	
 	public Delivery() {}

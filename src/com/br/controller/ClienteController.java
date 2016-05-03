@@ -150,11 +150,10 @@ public class ClienteController implements AbstractController {
 	}
 	
 	//
-	public static void cadastrarPedidoDelivery(Cliente cliente, List<Cardapio> cardapios) {
+public static void cadastrarPedidoDelivery(Usuario cliente, List<ItemPedido> itens, Double trocoPara) {
 		
 		EntityManager eM = AbstractController.factory.createEntityManager();
 		DeliveryDao deliveryDao = new DeliveryDao(eM);
-		ClienteDao cDao = new ClienteDao(eM);
 		ItemPedidoDao iDao = new ItemPedidoDao(eM);
 		ItemPedido i = new ItemPedido(); 
 		Calendar c = Calendar.getInstance();
@@ -162,20 +161,19 @@ public class ClienteController implements AbstractController {
 		
 		try {
 			
-			Delivery delivery = new Delivery(50.00, cliente);			
+			Delivery delivery = new Delivery(trocoPara, (Cliente) cliente);
 			delivery.setStatus(Status.ANDAMENTO);
 			delivery.setData(data);
 			deliveryDao.save(delivery);
 			
 
-			for (Cardapio cardapio : cardapios) {
-				i.setCardapio(cardapio);
+			for (ItemPedido item : itens) {
+				i.setCardapio(item.getCardapio());
 				i.setPedido(delivery);
+				i.setQtd(item.getQtd());
 				iDao.update(i);
 			}
 			
-
-			cDao.update(cliente);
 			eM.getTransaction().begin();		
 			eM.getTransaction().commit();
 		}catch (Exception e) {

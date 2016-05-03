@@ -17,75 +17,11 @@
 	<body>	
 		<!-- <form method="post" action="PedidoDelivery" id="form"> --><!--A tag ul contem os titulos das abas-->
 			<ul class="tabs">
-				<li><a href="#Create">Meus Pedidos</a></li>
 				<li><a href="#Read">Realizar Pedidos</a></li>
+				<li><a href="#Create">Meus Pedidos</a></li>
 				<input id="btnSair" type="submit" value="Sair" />
 			</ul>
 			
-			<div class="tab_container">
-				<div class="cont_tab" id="Create">
-					<fieldset ><legend>Meus Pedidos</legend>
-						<div class="tab_container" id="pesquisa">
-							<tbody>
-								<tr> 
-									<td align="right">
-										<label for="txtNumero"><em>Numero do Pedido:</em></label>
-									</td>
-									<td align="left">
-										<input id="caixa_Numero" title="Digite apenas numeros" type="text" pattern="[0-9]+$" autofocus="" required="" />
-									</td>
-									<td align="right">
-										<label for="txtStatus"><em>Status:</em></label>
-									</td>
-									<td align="left">
-											<SELECT name = "menuStatus" size=1>
-												<OPTION>
-												<OPTION>Atendido
-												<OPTION>Pendente
-												<OPTION>Cancelado
-											</SELECT>
-									</td>
-									<td align="right"></td>
-									<td align="left">
-										<input id="btnPesquisar" type="submit" value="Pesquisar" />
-									</td>
-								</tr>
-							</tbody>
-						</div>	
-							<div class="tabContainer" id="lista">
-								<table border="0px">
-									<thead>
-										<tr>
-											<th class="tabela-coluna"><span>Numero</span></th>
-											<th class="tabela-coluna"><span>Data</span></th>
-											<th class="tabela-coluna"><span>Total(R$)</span></th>
-											<th class="tabela-coluna"><span>Status</span></th>
-											<th class="tabela-coluna"><span>Acoes</span></th>
-										</tr>
-									</thead>
-								</table>
-								<div class="scrollContainer">
-									<table border="0">
-										<tbody>
-											<tr>
-												<td class="tabela-coluna"><span>123456</span></td>
-												<td class="tabela-coluna"><span>08/04/2016</span></td>
-												<td class="tabela-coluna"><span>20,00</span></td>
-												<td class="tabela-coluna"><span>ATIVO</span></td>
-												<td class="tabela-coluna">
-													<span>
-													<a href="../Tela-Detalhar Pedido/detalhe pedido.html">[Detalhar]</a>
-													<a href="Comando para excluir">[Excluir]</a>
-													</span>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-					</fieldset>
-				</div>
-				
 				<div class="cont_tab" id="Read">
 					<fieldset><legend>Cadastrar Pedido</legend>
 						<div class="tab_container" id="Pesquisa">
@@ -132,9 +68,10 @@
 											
 											<c:forEach var="item" items="${itens}">
 												<tr>
-												<td class="tabela-coluna"><span>${item.Cardapio.nome}</span></td>										
+												<td class="tabela-coluna"><span>${item.cardapio.nome}</span></td>										
 												<td class="tabela-coluna"><span>${item.qtd}</span></td>
-												<td class="tabela-coluna"><span>${item.qtd*item.Cardapio.preco}</span></td>
+												<td class="tabela-coluna"><span>${item.qtd*item.cardapio.preco}</span></td>
+												<td class="tabela-coluna">
 													<span>
 													<a href="Comando para excluir">[Excluir]</a>
 													</span>
@@ -146,16 +83,83 @@
 									</table>
 								</div>
 							</div>
-						<table class="TotalDoPedido">
-						<td align="right">Total do pedido</td>
-						</table>
-						</td>
-						<td align="left">
-							<input id="btnConfirmar" type="submit" value="Confirmar" />
-						</td>
-					</fieldset>
+			<form action="PedidoDelivery">
+				<table class="TotalDoPedido">
+					<td align="right">Total do pedido</td>
+				</table>
+				<td align="left"><input id="trocoPara" 
+					name="trocoPara" type="text" value="100.00"
+					>
+				</td>
+				<td align="left"><input id="btnConfirmar" type="submit"
+					value="Confirmar" />
+			</form>
+		</fieldset>
 				</div>
 			</div>
+			<div class="tab_container">
+				<div class="cont_tab" id="Create">
+					<fieldset ><legend>Meus Pedidos</legend>
+						<div class="tab_container" id="pesquisa">
+							<tbody>
+								<tr> 
+									<td align="right">
+										<label for="txtNumero"><em>Numero do Pedido:</em></label>
+									</td>
+									<td align="left">
+										<input id="caixa_Numero" title="Digite apenas numeros" type="text" pattern="[0-9]+$" autofocus="" required="" />
+									</td>
+									<td align="right">
+										<label for="txtStatus"><em>Status:</em></label>
+									</td>
+									<td align="left">
+											<SELECT name = "menuStatus" size=1>
+												<OPTION>
+												<OPTION>Atendido
+												<OPTION>Pendente
+												<OPTION>Cancelado
+											</SELECT>
+									</td>
+									<td align="right"></td>
+									<td align="left">
+										<input id="btnPesquisar" type="submit" value="Pesquisar" href="#Read" />
+									</td>
+								</tr>
+							</tbody>
+						</div>	
+							<div class="tabContainer" id="lista">
+								<table border="0px">
+									<thead>
+										<tr>
+											<th class="tabela-coluna"><span>Numero</span></th>
+											<th class="tabela-coluna"><span>Data</span></th>
+											<th class="tabela-coluna"><span>Total(R$)</span></th>
+											<th class="tabela-coluna"><span>Status</span></th>
+											<th class="tabela-coluna"><span>Acoes</span></th>
+										</tr>
+									</thead>
+								</table>
+								<div class="scrollContainer">
+									<table border="0">
+										<tbody>
+											<tr>
+												<td class="tabela-coluna"><span>123456</span></td>
+												<td class="tabela-coluna"><span>08/04/2016</span></td>
+												<td class="tabela-coluna"><span>20,00</span></td>
+												<td class="tabela-coluna"><span>ATIVO</span></td>
+												<td class="tabela-coluna">
+													<span>
+													<a href="../Tela-Detalhar Pedido/detalhe pedido.html">[Detalhar]</a>
+													<a href="Comando para excluir">[Excluir]</a>
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+					</fieldset>
+				</div>
 <!-- 		</form> -->
 	</body>
 </html>

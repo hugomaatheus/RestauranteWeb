@@ -1,4 +1,4 @@
-Ôªøul.tabs {
+ul.tabs {
 	list-style: none;
 	margin: 0px;
 	padding-bottom: 2px;
@@ -12,9 +12,9 @@
 	width: 100%;
 	-ms-filter:
 		"progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFA500, endColorstr=#FFC04D)";
-	/*Como sabemos o IE √© sempre o problema dos desenvolvedores. Para utilizar um efeito Gradiente do Css3 no IE √© necess√°rio acrescentar esta linha*/
+	/*Como sabemos o IE È sempre o problema dos desenvolvedores. Para utilizar um efeito Gradiente do Css3 no IE È necess·rio acrescentar esta linha*/
 	-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFA500, endColorstr=#FFC04D );
-	/*IE 5.5 - 7  ------ Esta linha faz com que o efeito gradiente do Css3 funciona em vers√µes antigas do IE*/
+	/*IE 5.5 - 7  ------ Esta linha faz com que o efeito gradiente do Css3 funciona em versıes antigas do IE*/
 	background: -moz-linear-gradient(top, #FFA500, #FFC04D) repeat-X;
 	background: -webkit-gradient(linear, left top, left bottom, from(#FFA500), to(#FFC04D) ) repeat-X;
 }
@@ -194,6 +194,17 @@ td span{
 	overflow:hidden;
 	word-break:normal;
 	background : white;
+}
+
+#trocoPara {
+ position:absolute;
+ width:100px;
+ height:30px;
+ left:60%;
+ top:83%;
+ font-family:Arial, sans-serif;
+ font-size: 14px;
+ padding: 10px;
 }
 
 #btnConfirmar{
